@@ -47,7 +47,10 @@ public class UtilisateurService {
             try(Session session = sessionFactory.openSession()){
                 session.beginTransaction();
                 u = lire(id);
-                if (u != null) session.remove(lire(id));
+                if (u != null){
+                    System.out.println("USER TO DELETE: " + u.toString());
+                    session.remove(u);
+                }
                 session.getTransaction().commit();
             }
         }

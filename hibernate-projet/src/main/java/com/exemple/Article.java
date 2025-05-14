@@ -1,8 +1,6 @@
 package com.exemple;
 
 
-import org.hibernate.annotations.OnDelete;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,7 +25,7 @@ public class Article {
     private String contenu;
 
     @ManyToOne
-    @JoinColumn(name="auteur_id")
+    @JoinColumn(name="auteur_id", nullable=false)
     private Utilisateur auteur;
 
     public Article(){}
