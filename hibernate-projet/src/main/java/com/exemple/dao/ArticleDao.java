@@ -7,20 +7,27 @@ import org.hibernate.SessionFactory;
 
 import com.exemple.Article;
 
-public class ArticleDao extends GenericDaoImp implements GenericDao<Article, Long>{
+public class ArticleDao extends GenericDaoImp<Article, Long>{
     
     public ArticleDao(SessionFactory sessionFactory){
-        super(sessionFactory);
+        super(sessionFactory, Article.class);
     }
     
-    @Override
-    public List<Article> tout() {
-        List<Article> uList;
+    public List<Article> trouverParAuteur(long utilisateur_id){
         try(Session session = sessionFactory.openSession()){
-                session.beginTransaction();
-                uList = session.createQuery("FROM Article", Article.class).list();
-                session.getTransaction().commit();
-            }
-            return uList;
+            String hql = "FROM Article a WHERE a.auteur = :utilisateur_id";
+            return session.createQuery(hql, Article.class)
+                            .setParameter("utilisateur_id", utilisateur_id)
+                            .getResultList();
+        }
+    }
+
+    public List<Article> chercherParTitre(String motcle){
+        try(Session session = sessionFactory.openSession()){
+            String hql = "FROM Article a WHERE a.titre LIKE :motcle";
+            return session.createQuery(hql, Article.class)
+                            .setParameter("motcle", "%" + motcle + "%")
+                            .getResultList();
+        }
     }
 }

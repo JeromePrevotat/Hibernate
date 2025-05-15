@@ -23,8 +23,6 @@ public class App {
         SessionFactory sessionFactory = metadata.buildSessionFactory();
         System.out.println("Connexion réussie !");
 
-        UtilisateurService uService = new UtilisateurService(sessionFactory);
-
         // CREATE USERS ARTICLES IN MEMORY
         List<Utilisateur> uList = new ArrayList<>();
         List<Article> aList = new ArrayList<>();
@@ -34,8 +32,6 @@ public class App {
         uList.add(u1);
         Article a0 = new Article("The Once & Future King", "Arthouuur ! C'est la guerrrre !", u1);
         Article a1 = new Article("H2G2", "The Hitchhiker's Guide to the Galaxy", u1);
-        a0.getAuteur().getArticles().add(a0);
-        a1.getAuteur().getArticles().add(a1);
         aList.add(a0);
         aList.add(a1);
 
@@ -43,11 +39,15 @@ public class App {
         UtilisateurDao uDao = new UtilisateurDao(sessionFactory);
         ArticleDao aDao = new ArticleDao(sessionFactory);
         for (Utilisateur u : uList) uDao.creer(u);
+        a0.getAuteur().getArticles().add(a0);
+        a1.getAuteur().getArticles().add(a1);
         for (Article a : aList) aDao.creer(a);
         
+        // DISPLAY        
         for (Utilisateur u : uDao.tout()) System.out.println(u.toString());
+        for (Article a : aDao.tout()) System.out.println(a.toString());
 
-        for (Utilisateur u : uList) uService.supprimer(u.getId());
-        // while (true){}
+        // CLEAN UP
+        // for (Utilisateur u : uList) uService.supprimer(u.getId());
     }
 }
