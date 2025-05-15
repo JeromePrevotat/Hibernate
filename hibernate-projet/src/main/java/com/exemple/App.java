@@ -2,6 +2,7 @@ package com.exemple;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -44,8 +45,19 @@ public class App {
         for (Article a : aList) aDao.creer(a);
         
         // DISPLAY        
-        for (Utilisateur u : uDao.tout()) System.out.println(u.toString());
-        for (Article a : aDao.tout()) System.out.println(a.toString());
+        // for (Utilisateur u : uDao.tout()) System.out.println(u.toString());
+        // for (Article a : aDao.tout()) System.out.println(a.toString());
+        // for (Article a : aDao.chercherParTitre("King")) System.out.println(a.toString());
+        System.out.println("------ QUERY RESULTS TITLE ------\n");
+        for (Article a : aDao.criteriaSeach(Optional.of("h2g2"), Optional.empty(), null, Optional.empty())) System.out.println(a.toString());
+        System.out.println("------ QUERY RESULTS AUTHOR ID ------\n");
+        for (Article a : aDao.criteriaSeach(Optional.empty(), Optional.of(u1.getId()),null, Optional.empty())) System.out.println(a.toString());
+        System.out.println("------ QUERY RESULTS TITLE + AUTHOR ID ------\n");
+        for (Article a : aDao.criteriaSeach(Optional.of("h2g2"), Optional.of(u1.getId()),null, Optional.empty())) System.out.println(a.toString());
+        System.out.println("------ QUERY RESULTS ORDER BY ------\n");
+        for (Article a : aDao.criteriaSeach(Optional.empty(), Optional.of(u1.getId()),"DESC", Optional.empty())) System.out.println(a.toString());
+        System.out.println("------ QUERY RESULTS LIMIT ------\n");
+        for (Article a : aDao.criteriaSeach(Optional.of("h2g2"), Optional.of(u1.getId()),"DESC",Optional.empty())) System.out.println(a.toString());
 
         // CLEAN UP
         // for (Utilisateur u : uList) uService.supprimer(u.getId());
