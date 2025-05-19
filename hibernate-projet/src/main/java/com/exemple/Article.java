@@ -1,23 +1,19 @@
 package com.exemple;
 
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
-public class Article {
+public class Article extends Publication{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @NotNull
+    @NotBlank
     @Size(max = 100)
     private String titre;
 
@@ -28,48 +24,38 @@ public class Article {
     @JoinColumn(name="auteur_id", nullable=false)
     private Utilisateur auteur;
 
-    public Article(){}
+    @NotBlank
+    private int nbVues = 0;
 
-    public Article (String titre, String contenu, Utilisateur auteur){
-        this.titre = titre;
-        this.contenu = contenu;
+    public Article(){ super(); }
+
+    public Article (String titre, String contenu, Utilisateur auteur, LocalDate datePublication){
+        super(titre, contenu, datePublication);
         this.auteur = auteur;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getTitre() {
-        return titre;
-    }
-
-    public String getContenu() {
-        return contenu;
     }
 
     public Utilisateur getAuteur() {
         return auteur;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setTitre(String titre) {
-        this.titre = titre;
-    }
-
-    public void setContenu(String contenu) {
-        this.contenu = contenu;
+    public int getNbVues(){
+        return this.nbVues;
     }
 
     public void setAuteur(Utilisateur auteur) {
         this.auteur = auteur;
     }
 
+    public void setNbVues(int nbVues){
+        this.nbVues = nbVues;
+    }
+
     @Override
     public String toString(){
-        return ("Titre: " + this.titre + "\nAuteur: " + this.getAuteur().getNom() + "\nContenu: " + this.contenu);
+        return ("Titre: " + this.titre +
+        "\nAuteur: " + this.getAuteur().getNom() +
+        "\nContenu: " + this.contenu) +
+        "\nDate de Publication: " + this.getDatePublication() +
+        "\nNombre de Vues: " + this.nbVues;
     }
 }

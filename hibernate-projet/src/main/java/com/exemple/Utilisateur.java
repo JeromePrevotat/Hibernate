@@ -27,6 +27,7 @@ public class Utilisateur {
     @OneToMany(targetEntity=Article.class, mappedBy="auteur", cascade=CascadeType.ALL, orphanRemoval=true, fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Article> articles;
+    private List<Annonce> annonce;
 
     public Utilisateur() {}
 
@@ -79,6 +80,18 @@ public class Utilisateur {
         if (a != null){
             articles.remove(a);
             a.setAuteur(null);
+        }
+    }
+
+    public void addAnnonce(Annonce a){
+        if (a != null){
+            this.annonce.add(a);
+        }
+    }
+
+    public void rmAnnonce(Annonce a){
+        if (a != null){
+            annonce.remove(a);
         }
     }
 

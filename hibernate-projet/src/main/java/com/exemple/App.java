@@ -1,8 +1,9 @@
 package com.exemple;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -10,6 +11,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import com.exemple.dao.AnnonceDao;
 import com.exemple.dao.ArticleDao;
 import com.exemple.dao.UtilisateurDao;
 
@@ -26,38 +28,49 @@ public class App {
 
         // CREATE USERS ARTICLES IN MEMORY
         List<Utilisateur> uList = new ArrayList<>();
-        List<Article> aList = new ArrayList<>();
+        List<Article> artList = new ArrayList<>();
+        List<Annonce> annList = new ArrayList<>();
         Utilisateur u0 = new Utilisateur("Bob", "bob@mail.com", new ArrayList<>());
         Utilisateur u1 = new Utilisateur("Alice", "alice@mail.com", new ArrayList<>());
         uList.add(u0);
         uList.add(u1);
-        Article a0 = new Article("The Once & Future King", "Arthouuur ! C'est la guerrrre !", u1);
-        Article a1 = new Article("H2G2", "The Hitchhiker's Guide to the Galaxy", u1);
-        aList.add(a0);
-        aList.add(a1);
+        Article art0 = new Article("The Once & Future King", "Arthouuur ! C'est la guerrrre !", u1, LocalDate.now());
+        Article art1 = new Article("H2G2", "The Hitchhiker's Guide to the Galaxy", u1, LocalDate.now());
+        artList.add(art0);
+        artList.add(art1);
+        Annonce ann0 = new Annonce("Annonce 1", "Ceci est une annonce", LocalDate.now(), (LocalDate.now().plusDays(1)), u0.getEmail(), BigDecimal.valueOf(1));
+        Annonce ann1 = new Annonce("Annonce 2", "Ceci est une annonce", LocalDate.now(), (LocalDate.now().plusDays(2)), u0.getEmail(), BigDecimal.valueOf(2));
+        annList.add(ann0);
+        annList.add(ann1);
 
         // DB OPERATIONS
         UtilisateurDao uDao = new UtilisateurDao(sessionFactory);
-        ArticleDao aDao = new ArticleDao(sessionFactory);
+        ArticleDao artDao = new ArticleDao(sessionFactory);
+        AnnonceDao annDao = new AnnonceDao(sessionFactory);
         for (Utilisateur u : uList) uDao.creer(u);
-        a0.getAuteur().getArticles().add(a0);
-        a1.getAuteur().getArticles().add(a1);
-        for (Article a : aList) aDao.creer(a);
+        art0.getAuteur().getArticles().add(art0);
+        art1.getAuteur().getArticles().add(art1);
+        for (Article a : artList) artDao.creer(a);
+        u0.addAnnonce(ann0);
+        u0.addAnnonce(ann1);
+        for (Annonce a : annList) annDao.creer(a);
         
         // DISPLAY        
         // for (Utilisateur u : uDao.tout()) System.out.println(u.toString());
-        // for (Article a : aDao.tout()) System.out.println(a.toString());
-        // for (Article a : aDao.chercherParTitre("King")) System.out.println(a.toString());
-        System.out.println("------ QUERY RESULTS TITLE ------\n");
-        for (Article a : aDao.criteriaSeach(Optional.of("h2g2"), Optional.empty(), null, Optional.empty())) System.out.println(a.toString());
-        System.out.println("------ QUERY RESULTS AUTHOR ID ------\n");
-        for (Article a : aDao.criteriaSeach(Optional.empty(), Optional.of(u1.getId()),null, Optional.empty())) System.out.println(a.toString());
-        System.out.println("------ QUERY RESULTS TITLE + AUTHOR ID ------\n");
-        for (Article a : aDao.criteriaSeach(Optional.of("h2g2"), Optional.of(u1.getId()),null, Optional.empty())) System.out.println(a.toString());
-        System.out.println("------ QUERY RESULTS ORDER BY ------\n");
-        for (Article a : aDao.criteriaSeach(Optional.empty(), Optional.of(u1.getId()),"DESC", Optional.empty())) System.out.println(a.toString());
-        System.out.println("------ QUERY RESULTS LIMIT ------\n");
-        for (Article a : aDao.criteriaSeach(Optional.of("h2g2"), Optional.of(u1.getId()),"DESC",Optional.empty())) System.out.println(a.toString());
+        // for (Article a : artDao.tout()) System.out.println(a.toString());
+        // for (Article a : artDao.chercherParTitre("King")) System.out.println(a.toString());
+        // System.out.println("------ QUERY RESULTS TITLE ------\n");
+        // for (Article a : artDao.criteriaSeach(Optional.of("h2g2"), Optional.empty(), null, Optional.empty())) System.out.println(a.toString());
+        // System.out.println("------ QUERY RESULTS AUTHOR ID ------\n");
+        // for (Article a : artDao.criteriaSeach(Optional.empty(), Optional.of(u1.getId()),null, Optional.empty())) System.out.println(a.toString());
+        // System.out.println("------ QUERY RESULTS TITLE + AUTHOR ID ------\n");
+        // for (Article a : artDao.criteriaSeach(Optional.of("h2g2"), Optional.of(u1.getId()),null, Optional.empty())) System.out.println(a.toString());
+        // System.out.println("------ QUERY RESULTS ORDER BY ------\n");
+        // for (Article a : artDao.criteriaSeach(Optional.empty(), Optional.of(u1.getId()),"DESC", Optional.empty())) System.out.println(a.toString());
+        // System.out.println("------ QUERY RESULTS LIMIT ------\n");
+        // for (Article a : artDao.criteriaSeach(Optional.of("h2g2"), Optional.of(u1.getId()),"DESC",Optional.empty())) System.out.println(a.toString());
+
+        // IHNERITANCE DB STRATEGY
 
         // CLEAN UP
         // for (Utilisateur u : uList) uService.supprimer(u.getId());
