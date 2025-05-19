@@ -27,14 +27,16 @@ public class Utilisateur {
     @OneToMany(targetEntity=Article.class, mappedBy="auteur", cascade=CascadeType.ALL, orphanRemoval=true, fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Article> articles;
-    private List<Annonce> annonce;
+    
+    // private List<Annonce> annonces;
 
     public Utilisateur() {}
 
-    public Utilisateur(String nom, String email, List<Article> articles) {
+    public Utilisateur(String nom, String email, List<Article> articles, List<Annonce> annonces) {
         this.nom = nom;
         this.email = email;
         this.articles = articles;
+        // this.annonces = annonces;
     }
 
     public void setId(Long id) {
@@ -69,6 +71,10 @@ public class Utilisateur {
         this.articles = articles;
     }
 
+    // public void setAnnonces(List<Annonce> annonces) {
+    //     this.annonces = annonces;
+    // }
+
     public void addArticle(Article a){
         if (a != null){
             this.articles.add(a);
@@ -83,17 +89,17 @@ public class Utilisateur {
         }
     }
 
-    public void addAnnonce(Annonce a){
-        if (a != null){
-            this.annonce.add(a);
-        }
-    }
+    // public void addAnnonce(Annonce a){
+    //     if (a != null){
+    //         this.annonces.add(a);
+    //     }
+    // }
 
-    public void rmAnnonce(Annonce a){
-        if (a != null){
-            annonce.remove(a);
-        }
-    }
+    // public void rmAnnonce(Annonce a){
+    //     if (a != null){
+    //         annonces.remove(a);
+    //     }
+    // }
 
     @Override
     public String toString(){

@@ -30,8 +30,8 @@ public class App {
         List<Utilisateur> uList = new ArrayList<>();
         List<Article> artList = new ArrayList<>();
         List<Annonce> annList = new ArrayList<>();
-        Utilisateur u0 = new Utilisateur("Bob", "bob@mail.com", new ArrayList<>());
-        Utilisateur u1 = new Utilisateur("Alice", "alice@mail.com", new ArrayList<>());
+        Utilisateur u0 = new Utilisateur("Bob", "bob@mail.com", new ArrayList<>(), new ArrayList<>());
+        Utilisateur u1 = new Utilisateur("Alice", "alice@mail.com", new ArrayList<>(), new ArrayList<>());
         uList.add(u0);
         uList.add(u1);
         Article art0 = new Article("The Once & Future King", "Arthouuur ! C'est la guerrrre !", u1, LocalDate.now());
@@ -51,9 +51,11 @@ public class App {
         art0.getAuteur().getArticles().add(art0);
         art1.getAuteur().getArticles().add(art1);
         for (Article a : artList) artDao.creer(a);
-        u0.addAnnonce(ann0);
-        u0.addAnnonce(ann1);
-        for (Annonce a : annList) annDao.creer(a);
+        annDao.creer(ann0);
+        annDao.creer(ann1);
+        // u0.addAnnonce(ann0);
+        // u0.addAnnonce(ann1);
+        // for (Annonce a : annList) annDao.creer(a);
         
         // DISPLAY        
         // for (Utilisateur u : uDao.tout()) System.out.println(u.toString());
@@ -71,6 +73,9 @@ public class App {
         // for (Article a : artDao.criteriaSeach(Optional.of("h2g2"), Optional.of(u1.getId()),"DESC",Optional.empty())) System.out.println(a.toString());
 
         // IHNERITANCE DB STRATEGY
+        // DISPLAY
+        for (Article art : artDao.tout()) System.out.println(art.toString());
+        for (Annonce ann : annDao.tout()) System.out.println(ann.toString());
 
         // CLEAN UP
         // for (Utilisateur u : uList) uService.supprimer(u.getId());

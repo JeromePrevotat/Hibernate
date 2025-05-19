@@ -16,6 +16,8 @@
         <property name="hibernate.show_sql">false</property>
         <property name="hibernate.format_sql">true</property>
         <mapping class="com.exemple.Utilisateur"/>
+        <mapping class="com.exemple.Publication" />
         <mapping class="com.exemple.Article" />
+        <mapping class="com.exemple.Annonce" />
     </session-factory>
 </hibernate-configuration>

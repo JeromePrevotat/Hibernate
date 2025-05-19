@@ -4,6 +4,7 @@ package com.exemple;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Future;
@@ -12,8 +13,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
+@DiscriminatorValue("Annonce")
 public class Annonce extends Publication{
-
     @NotBlank
     @Size(max = 100)
     private String titre;

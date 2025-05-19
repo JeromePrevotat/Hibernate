@@ -3,6 +3,7 @@ package com.exemple;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -11,6 +12,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
+@DiscriminatorValue("Article")
 public class Article extends Publication{
 
     @NotBlank
@@ -21,7 +23,9 @@ public class Article extends Publication{
     private String contenu;
 
     @ManyToOne
-    @JoinColumn(name="auteur_id", nullable=false)
+    @JoinColumn(name="auteur_id")
+    @NotBlank
+    // @NotNull  NOT POSSIBLE IN SINGLE_TABLE
     private Utilisateur auteur;
 
     @NotBlank
@@ -33,6 +37,12 @@ public class Article extends Publication{
         super(titre, contenu, datePublication);
         this.auteur = auteur;
     }
+
+    // @PrePersist
+    // @PreUpdate
+    // private void validateAuteur(){
+    //     if (auteur == null) throw new IllegalStateException("Error: Field <auteur> for Class Article cannot be null");
+    // }
 
     public Utilisateur getAuteur() {
         return auteur;
