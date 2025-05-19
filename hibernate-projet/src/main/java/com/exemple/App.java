@@ -13,6 +13,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import com.exemple.dao.AnnonceDao;
 import com.exemple.dao.ArticleDao;
+import com.exemple.dao.PublicationDao;
 import com.exemple.dao.UtilisateurDao;
 
 
@@ -47,6 +48,7 @@ public class App {
         UtilisateurDao uDao = new UtilisateurDao(sessionFactory);
         ArticleDao artDao = new ArticleDao(sessionFactory);
         AnnonceDao annDao = new AnnonceDao(sessionFactory);
+        PublicationDao pubDao = new PublicationDao(sessionFactory);
         for (Utilisateur u : uList) uDao.creer(u);
         art0.getAuteur().getArticles().add(art0);
         art1.getAuteur().getArticles().add(art1);
@@ -77,7 +79,8 @@ public class App {
         for (Article art : artDao.tout()) System.out.println(art.toString());
         for (Annonce ann : annDao.tout()) System.out.println(ann.toString());
 
-        // CLEAN UP
-        // for (Utilisateur u : uList) uService.supprimer(u.getId());
+        // CLEAN UP DB
+        // for(Publication p : pubDao.tout()) pubDao.supprimer(p.getId());
+        // for(Utilisateur u : uDao.tout()) uDao.supprimer(u.getId());
     }
 }
