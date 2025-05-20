@@ -2,22 +2,18 @@ package com.exemple;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.DiscriminatorColumn;
-import jakarta.persistence.DiscriminatorType;
-import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PastOrPresent;
 
 // SINGLE_TABLE - JOINED - TABLE_PER_CLASS
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@Entity
-@DiscriminatorColumn(name="type_article", discriminatorType = DiscriminatorType.STRING)
-// @MappedSuperclass
+// @Inheritance(strategy=InheritanceType.JOINED)
+// @Entity
+// @DiscriminatorColumn(name="type_article", discriminatorType = DiscriminatorType.STRING)
+@MappedSuperclass
 public abstract class Publication {
 
     @Id
@@ -37,7 +33,9 @@ public abstract class Publication {
     public Publication(){}
 
     public Publication(String titre, String contenu, LocalDate datePublication) {
+        System.out.println("PUBLICATION BEFORE CONSTRUCTOR STRING: " + titre);
         this.titre = titre;
+        System.out.println("PUBLICATION AFTER CONSTRUCTOR STRING: " + titre);
         this.contenu = contenu;
         this.datePublication = datePublication;
     }

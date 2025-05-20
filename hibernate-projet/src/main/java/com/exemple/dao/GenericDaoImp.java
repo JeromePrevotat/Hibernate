@@ -1,5 +1,6 @@
 package com.exemple.dao;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -17,10 +18,18 @@ public abstract class GenericDaoImp<T, ID>{
     
     public void creer(T entity) {
         if (entity != null){
+            Method m = null;
             try(Session session = sessionFactory.openSession()){
                 session.beginTransaction();
+                if (entity.getClass().getName().equals("com.exemple.Article")){
+                    m = entity.getClass().getMethod("getTitre");
+                    System.out.println("GENERICDAO BEFORE PERSIST: " + m.invoke(entity));
+                }
                 session.persist(entity);
+                if (entity.getClass().getName().equals("com.exemple.Article")) System.out.println("GENERICDAO AFTER PERSIST: " + m.invoke(entity));
                 session.getTransaction().commit();
+            } catch (Exception e){
+                System.err.println(e.getMessage());
             }
         }
     }

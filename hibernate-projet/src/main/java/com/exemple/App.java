@@ -39,6 +39,7 @@ public class App {
         Article art1 = new Article("H2G2", "The Hitchhiker's Guide to the Galaxy", u1, LocalDate.now());
         artList.add(art0);
         artList.add(art1);
+        System.out.println("MEMORY ARTICLE: " + art0.getTitre());
         Annonce ann0 = new Annonce("Annonce 1", "Ceci est une annonce", LocalDate.now(), (LocalDate.now().plusDays(1)), u0.getEmail(), BigDecimal.valueOf(1));
         Annonce ann1 = new Annonce("Annonce 2", "Ceci est une annonce", LocalDate.now(), (LocalDate.now().plusDays(2)), u0.getEmail(), BigDecimal.valueOf(2));
         annList.add(ann0);
@@ -53,6 +54,7 @@ public class App {
         art0.getAuteur().getArticles().add(art0);
         art1.getAuteur().getArticles().add(art1);
         for (Article a : artList) artDao.creer(a);
+        System.out.println("DB ARTICLE: " + artDao.tout().get(0).toString());
         annDao.creer(ann0);
         annDao.creer(ann1);
         // u0.addAnnonce(ann0);
@@ -81,6 +83,8 @@ public class App {
 
         // CLEAN UP DB
         // for(Publication p : pubDao.tout()) pubDao.supprimer(p.getId());
-        // for(Utilisateur u : uDao.tout()) uDao.supprimer(u.getId());
+        for (Article art : artDao.tout()) artDao.supprimer(art.getId());
+        for (Annonce ann : annDao.tout()) annDao.supprimer(ann.getId());
+        for(Utilisateur u : uDao.tout()) uDao.supprimer(u.getId());
     }
 }

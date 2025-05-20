@@ -35,6 +35,7 @@ public class Article extends Publication{
 
     public Article (String titre, String contenu, Utilisateur auteur, LocalDate datePublication){
         super(titre, contenu, datePublication);
+        System.out.println("ARTICLE CONSTRUCTOR STRING: " + titre);
         this.auteur = auteur;
     }
 
