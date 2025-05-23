@@ -10,6 +10,7 @@ com\exemple\Publication.class
 com\exemple\App.class
 com\exemple\Article.class
 com\exemple\dao\GenericDao.class
+com\exemple\ArticleResource.class
 com\exemple\ArticleService.class
 com\exemple\dao\PublicationDao.class
 com\exemple\Annonce.class

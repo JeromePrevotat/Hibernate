@@ -24,14 +24,13 @@
                 <artifactId>jackson-databind</artifactId>
                 <version>2.13.2</version>
             </dependency>
+            <!-- ADDED -->
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-annotations</artifactId>
                 <version>2.13.2</version>
             </dependency>
-
-
-            
+            <!-- ADDED -->
 
             <dependency>
                 <groupId>org.junit</groupId>
@@ -103,6 +102,21 @@
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet</artifactId>
         </dependency>
+
+        <!--ADDED-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.13.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.13.2</version> <!-- même version que jackson-databind -->
+        </dependency>
+        <!--ADDED-->
+
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
