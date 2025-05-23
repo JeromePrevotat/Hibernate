@@ -66,7 +66,7 @@ public class App {
 
         for (Utilisateur u : uDao.tout()) System.out.println(u.toString());
         System.out.println("\n===== END MAIN =====\n");
-        
+
         // RUN SERVER
         runServlet();
 

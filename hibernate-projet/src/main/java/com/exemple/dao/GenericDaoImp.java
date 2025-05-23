@@ -40,9 +40,8 @@ public abstract class GenericDaoImp<T, ID>{
             session.beginTransaction();
             T o = session.get(tType, id);
             session.getTransaction().commit();
-            if (o != null) return o;
+            return o;
         }
-        return null;
     }
 
     public void supprimer(ID id) {

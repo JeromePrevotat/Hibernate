@@ -14,7 +14,7 @@ GET http://localhost:8080/utilisateurs
 
 ### Récupérer une personne par ID (exemple avec id=1)
 
-GET http://localhost:8080/utilisateurs/1
+GET http://localhost:8080/utilisateurs/2
 
 ### Modifier une personne (exemple avec id=1)
 

@@ -31,7 +31,7 @@ public class UtilisateurResource {
 
     @GET
     @Path("/{id}")
-    public Utilisateur getById(long id){
+    public Utilisateur getById(@PathParam("id") long id){
         return utilisateurDao.lire(id);
     }
 
