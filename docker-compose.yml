@@ -9,7 +9,7 @@ services:
             MYSQL_USER: user
             MYSQL_PASSWORD: password
         ports:
-            - "8080:8080"
+            - "3306:3306"
         volumes:
             - mysql_data:/var/lib/mysql
 
@@ -25,6 +25,8 @@ services:
             DB_NAME: testdb
             DB_USER: user
             DB_PASSWORD: password
+        ports:
+            - "8080:8080"
 
         # mysql client container for testing
     mysql-client:

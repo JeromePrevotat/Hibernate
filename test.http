@@ -10,7 +10,7 @@ Content-Type: application/json
 
 ### Lister toutes les personnes
 
-GET http://localhost:8080/api/utilisateurs
+GET http://localhost:8080/utilisateurs
 
 ### Récupérer une personne par ID (exemple avec id=1)
 
