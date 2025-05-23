@@ -91,8 +91,8 @@ public class App {
         // for (Annonce ann : annDao.tout()) System.out.println(ann.toString());
 
         // CLEAN UP DB
-        // for(Publication p : pubDao.tout()) pubDao.supprimer(p.getId());
-        // for(Utilisateur u : uDao.tout()) uDao.supprimer(u.getId());
+        for(Publication p : pubDao.tout()) pubDao.supprimer(p.getId());
+        for(Utilisateur u : uDao.tout()) uDao.supprimer(u.getId());
     }
 
     private static void runServlet() throws Exception {

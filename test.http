@@ -1,0 +1,31 @@
+### Créer une personne
+
+POST http://localhost:8080/persons
+Content-Type: application/json
+
+{
+"nom": "Dupont",
+"prenom": "Jean"
+}
+
+### Lister toutes les personnes
+
+GET http://localhost:8080/api/utilisateurs
+
+### Récupérer une personne par ID (exemple avec id=1)
+
+GET http://localhost:8080/persons/1
+
+### Modifier une personne (exemple avec id=1)
+
+PUT http://localhost:8080/persons/1
+Content-Type: application/json
+
+{
+"nom": "Durand",
+"prenom": "Paul"
+}
+
+### Supprimer une personne (exemple avec id=1)
+
+DELETE http://localhost:8080/persons/1
