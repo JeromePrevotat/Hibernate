@@ -18,7 +18,7 @@ GET http://localhost:8080/utilisateurs/2
 
 ### Modifier une personne (exemple avec id=1)
 
-PUT http://localhost:8080/utilisateurs/1
+PUT http://localhost:8080/utilisateurs/22
 Content-Type: application/json
 
 {

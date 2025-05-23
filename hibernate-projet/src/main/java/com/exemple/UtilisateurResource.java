@@ -44,7 +44,7 @@ public class UtilisateurResource {
     @Path("/{id}")
     public void update(@PathParam("id") long id, Utilisateur utilisateur){
         utilisateur.setId(id);
-        utilisateurDao.creer(utilisateur);
+        utilisateurDao.mettreAJour(utilisateur);
     }
 
     @DELETE
