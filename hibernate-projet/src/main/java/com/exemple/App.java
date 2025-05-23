@@ -31,9 +31,6 @@ public class App {
         Metadata metadata = new MetadataSources(registry).buildMetadata();
         SessionFactory sessionFactory = metadata.buildSessionFactory();
         System.out.println("Connexion réussie !");
-
-        // RUN SERVER
-        runServlet();
         
         // CREATE USERS ARTICLES IN MEMORY
         List<Utilisateur> uList = new ArrayList<>();
@@ -66,7 +63,13 @@ public class App {
         // u0.addAnnonce(ann0);
         // u0.addAnnonce(ann1);
         // for (Annonce a : annList) annDao.creer(a);
+
+        for (Utilisateur u : uDao.tout()) System.out.println(u.toString());
+        System.out.println("\n===== END MAIN =====\n");
         
+        // RUN SERVER
+        runServlet();
+
         // DISPLAY        
         // for (Utilisateur u : uDao.tout()) System.out.println(u.toString());
         // for (Article a : artDao.tout()) System.out.println(a.toString());
@@ -84,8 +87,8 @@ public class App {
 
         // IHNERITANCE DB STRATEGY
         // DISPLAY
-        for (Article art : artDao.tout()) System.out.println(art.toString());
-        for (Annonce ann : annDao.tout()) System.out.println(ann.toString());
+        // for (Article art : artDao.tout()) System.out.println(art.toString());
+        // for (Annonce ann : annDao.tout()) System.out.println(ann.toString());
 
         // CLEAN UP DB
         // for(Publication p : pubDao.tout()) pubDao.supprimer(p.getId());

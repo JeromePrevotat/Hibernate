@@ -1,0 +1,15 @@
+com\exemple\Utilisateur.class
+com\exemple\ApiApplication.class
+com\exemple\dao\ArticleDao.class
+com\exemple\dao\AnnonceDao.class
+com\exemple\dao\UtilisateurDao.class
+com\exemple\UtilisateurResource.class
+com\exemple\dao\GenericDaoImp.class
+com\exemple\UtilisateurService.class
+com\exemple\Publication.class
+com\exemple\App.class
+com\exemple\Article.class
+com\exemple\dao\GenericDao.class
+com\exemple\ArticleService.class
+com\exemple\dao\PublicationDao.class
+com\exemple\Annonce.class

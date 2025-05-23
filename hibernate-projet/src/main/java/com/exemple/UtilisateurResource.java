@@ -21,7 +21,7 @@ import jakarta.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class UtilisateurResource {
-    private SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+    private final SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
     private final UtilisateurDao utilisateurDao = new UtilisateurDao(sessionFactory);
 
     @GET

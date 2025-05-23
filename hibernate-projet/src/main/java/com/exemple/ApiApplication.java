@@ -1,12 +1,11 @@
 package com.exemple;
 
+import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
-
-import com.fasterxml.jackson.core.util.JacksonFeature;
 
 public class ApiApplication extends ResourceConfig{
     public ApiApplication(){
-        packages("com.exemple");
+        packages("com.exemple", "com.exemple.dao");
         register(JacksonFeature.class);
     }
 }

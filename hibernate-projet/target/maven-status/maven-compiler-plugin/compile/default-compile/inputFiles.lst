@@ -1,4 +1,15 @@
+C:\Users\HB\Documents\Maven\orm_hibernate_lab\hibernate-projet\src\main\java\com\exemple\Annonce.java
+C:\Users\HB\Documents\Maven\orm_hibernate_lab\hibernate-projet\src\main\java\com\exemple\ApiApplication.java
 C:\Users\HB\Documents\Maven\orm_hibernate_lab\hibernate-projet\src\main\java\com\exemple\App.java
 C:\Users\HB\Documents\Maven\orm_hibernate_lab\hibernate-projet\src\main\java\com\exemple\Article.java
+C:\Users\HB\Documents\Maven\orm_hibernate_lab\hibernate-projet\src\main\java\com\exemple\ArticleService.java
+C:\Users\HB\Documents\Maven\orm_hibernate_lab\hibernate-projet\src\main\java\com\exemple\dao\AnnonceDao.java
+C:\Users\HB\Documents\Maven\orm_hibernate_lab\hibernate-projet\src\main\java\com\exemple\dao\ArticleDao.java
+C:\Users\HB\Documents\Maven\orm_hibernate_lab\hibernate-projet\src\main\java\com\exemple\dao\GenericDao.java
+C:\Users\HB\Documents\Maven\orm_hibernate_lab\hibernate-projet\src\main\java\com\exemple\dao\GenericDaoImp.java
+C:\Users\HB\Documents\Maven\orm_hibernate_lab\hibernate-projet\src\main\java\com\exemple\dao\PublicationDao.java
+C:\Users\HB\Documents\Maven\orm_hibernate_lab\hibernate-projet\src\main\java\com\exemple\dao\UtilisateurDao.java
+C:\Users\HB\Documents\Maven\orm_hibernate_lab\hibernate-projet\src\main\java\com\exemple\Publication.java
 C:\Users\HB\Documents\Maven\orm_hibernate_lab\hibernate-projet\src\main\java\com\exemple\Utilisateur.java
+C:\Users\HB\Documents\Maven\orm_hibernate_lab\hibernate-projet\src\main\java\com\exemple\UtilisateurResource.java
 C:\Users\HB\Documents\Maven\orm_hibernate_lab\hibernate-projet\src\main\java\com\exemple\UtilisateurService.java
