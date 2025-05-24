@@ -4,8 +4,14 @@ POST http://localhost:8080/articles
 Content-Type: application/json
 
 {
-"nom": "Dupont Jean",
-"email": "dupont&dupont@mail.com"
+"titre": "Updated Title",
+"contenu": "Lorem ipsum blablabla",
+"auteur": {
+    "id": 45,
+    "nom": "Alice",
+    "email": "alice@mail.com"
+    },
+    "datePublication":"2025-05-24"
 }
 
 ### Lister toutes les articles
@@ -18,12 +24,18 @@ GET http://localhost:8080/articles/2
 
 ### Modifier une article (exemple avec id=1)
 
-PUT http://localhost:8080/articles/22
+PUT http://localhost:8080/articles/2
 Content-Type: application/json
 
 {
-"nom": "Durand Paul",
-"email": "pololejardinier@mail.com"
+"titre": "Updated Title",
+"contenu": "Lorem ipsum blablabla",
+"auteur": {
+    "id": 45,
+    "nom": "Alice",
+    "email": "alice@mail.com"
+    },
+    "datePublication":"2025-05-24"
 }
 
 ### Supprimer une article (exemple avec id=1)

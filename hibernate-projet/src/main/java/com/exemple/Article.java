@@ -38,12 +38,6 @@ public class Article extends Publication{
         this.auteur = auteur;
     }
 
-    // @PrePersist
-    // @PreUpdate
-    // private void validateAuteur(){
-    //     if (auteur == null) throw new IllegalStateException("Error: Field <auteur> for Class Article cannot be null");
-    // }
-
     public Utilisateur getAuteur() {
         return auteur;
     }

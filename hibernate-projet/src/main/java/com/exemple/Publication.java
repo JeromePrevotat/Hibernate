@@ -2,6 +2,8 @@ package com.exemple;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
@@ -32,6 +34,7 @@ public abstract class Publication {
 
     @NotBlank
     @PastOrPresent
+    @JsonIgnore
     private LocalDate datePublication;
 
     public Publication(){}
